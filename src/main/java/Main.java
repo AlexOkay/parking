@@ -1,34 +1,45 @@
 import com.mifmif.common.regex.Generex;
 
 import parking.Parking;
-import parking.ParkingImpl;
+import parking.ParkingManager;
 import transport.Car;
 import transport.Truck;
 import transport.Vehicle;
 
 
 import java.util.*;
-import java.util.function.Function;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
 
 public class Main
 {
 
     public static void main(String[] args) {
-        Iter1();
+        st();
     }
 
 
 
-
-
-    private static void Iter1()
+    private static void st()
     {
-        Parking parking = new ParkingImpl();
+        ParkingManager parkingManager = new ParkingManager();
+      //  Vehicle vehicle = null;
+        List<String> vehicleNumbers = null;
+
+        for(int i = 0; i< 10;i++)
+        {
+            Vehicle vehicle = null;
+            String number = getSaltString();
+            if(i % 2 == 0)  vehicle = new Car(number);
+            else vehicle = new Truck(number);
+            parkingManager.arrive(vehicle);
+
+        }
+
+    }
+
+
+   /* private static void Iter1()
+    {
+        Parking parking = new Parking();
         Vehicle vehicle = null;
         List<String> vehicleNumbers = null;
 
@@ -45,7 +56,7 @@ public class Main
             System.out.println(number);
         }
         //пошумим
-        parking.getPark().forEach((k,v) -> v.beep());
+        parking.getAllVehicle().forEach((k,v) -> v.beep());
 
         System.out.println("На стоянке: " + parking.getCurrentVehicleCount() + " машин");
         //удалим все машины со стоянки
@@ -57,8 +68,8 @@ public class Main
         //vehicleNumbers.stream().map(x -> parking.removeVehicle(x)).count();
 
         //все в норме, стоянка пуста
-        System.out.println(parking.getPark().isEmpty());
-    }
+        System.out.println(parking.getAllVehicle().isEmpty());
+    }*/
 
     //генератор случайных строк, из регулярки
     protected static String getSaltString() {

@@ -5,12 +5,13 @@ import java.util.Objects;
 
 public abstract class VehicleA implements Vehicle
 {
-    private String number = null;
+    private String number      = null;
 
     public VehicleA(String number)
     {
-        this.number = number;
+        this.number      = number;
     }
+
 
     @Override
     public  String getVehicleNumber() {
